@@ -52,12 +52,13 @@ function update() {
 // that always has 2 decimal places.
 function calculateMonthlyPayment(values) {
   var p = values.amount;
-  var i = (values.rate/12);
+  var i = (values.rate/12)/100;
   var n = values.years*12;
   var top = p * i;
   var buttom = 1- Math.pow((1+i),(-n));
-  var monthly = (top/buttom).toString();
+  var monthly = (top/buttom).toFixed(2).toString();
   updateMonthly(monthly);
+  return monthly;
 }
 
 // Given a string representing the monthly payment value,
